@@ -1,28 +1,28 @@
-# 上线检查 · 2026-10-28
+# 上线记录 · 2026-10-28
 
-## 实际状态
+## 发布结果
 
-本地部署准备完成，远程发布尚未发生。没有可确认的GitHub仓库地址、Pages公开地址或线上Actions执行结果。
+- 独立公开仓库：https://github.com/liurunjia629-bit/Dont-Make-Me-Work
+- GitHub Pages：https://liurunjia629-bit.github.io/Dont-Make-Me-Work/
+- 首次成功Actions：https://github.com/liurunjia629-bit/Dont-Make-Me-Work/actions/runs/40673730308
+- 首次发布提交：`1a971b4e2caa8c2516ba433a1ee4a94f0abfd221`
 
-已通过连接器确认当前账号为liurunjia629-bit，可访问仓库中未发现Dont-Make-Me-Work；公开GitHub API查询该目标仓库返回404。现有本地仓库main工作正常，未配置远程。
+用户创建仓库后，已确认仓库身份、公开状态和main默认分支。保留原初始化README提交，上传37个跟踪文件；未上传dist、node_modules或临时测试页面。首次Actions的安装、测试、构建、configure-pages、上传产物和deploy-pages全部成功。公开地址来自实际部署日志的环境URL，不是推测链接。
 
-发布阻碍：GitHub连接器没有创建仓库/设置Pages接口；浏览器控制打开GitHub后超时，随后初始化失败；本机Git Credential Manager无法读取其凭据存储。没有提取、输出、写入或转存任何凭据。没有尝试修改第一款仓库。
+## 验证
 
-## 本地检查
+- 本地npm install、npm ci、18项测试、npm run build均通过。
+- `.github/workflows/deploy.yml`使用Node22、锁文件和官方Pages Actions，在main推送时部署。
+- 生产技术栈仍为原生JavaScript模块、Canvas/SVG和Web Audio，无Vite、React或TypeScript配置；未更改游戏玩法。
+- 以真实公开URL请求首页及全部生产文件，共26个URL，全部HTTP200；逐字节与本地dist校验一致，包括Logo、SVG/ICO Favicon、样式和游戏/音频模块。
+- 图形和声音由本地资源或程序生成，无外部CDN、图片和音频文件依赖。静态引用使用相对地址，子路径检查通过。
+- 统一Logo、角色路径、原音效及第一款游戏仓库未修改。
+- 本地origin已指向本游戏独立仓库，并保留本地开发历史及远程初始化历史。
 
-- 实际技术栈为无依赖原生JavaScript模块、Canvas/SVG、Web Audio。无Vite/React/TypeScript配置，不进行技术栈转换。
-- 从官方npm registry取得npm CLI，在工作区临时目录运行，没有加入项目。
-- `npm install --ignore-scripts --no-audit --no-fund`成功，生成package-lock.json。
-- `npm test`通过18项测试，包含新增的Pages子路径静态资源与模块引用检查。
-- `npm run build`成功，dist包含本地资源；node_modules和dist不提交。
-- 统一部署文件为`.github/workflows/deploy.yml`，含Node22、npm ci、测试、构建、官方Pages上传与部署Action；不存在重复Pages工作流。
-- 全部资源路径保持相对地址，未添加根绝对路径；图形和声音无CDN依赖。
-- 本地HTTP子路径模拟验证：在 /Dont-Make-Me-Work/ 下请求26个生产URL，全部返回200；根路径/src/main.js返回404，确认测试不依赖根地址。
-- 与Actions相同的npm ci安装方式也已本地执行成功。
-- 上一阶段真实桌面浏览器已经检查320/375/430px窄视口：首页、Logo、开始按钮、游戏区域和操作按钮可见。已实际操作音效开关。本次浏览器通道故障，未重新进行浏览器验收，也未完成手机真机验收。
+## 验证边界
 
-## 完成发布还需
+浏览器控制通道初始化失败，因此本次**未完成线上浏览器交互、控制台和真实手机验收**。HTTP资源检查不等于完整运行体验验收。上一阶段本地浏览器已检查教学、按钮、暂停/恢复、事件和320/375/430px窄视口。
 
-创建独立公开仓库Dont-Make-Me-Work，并启用Settings → Pages → GitHub Actions。随后将本地main推送至这个仓库，检查工作流的部署URL和公开访问状态。创建仓库后，现有连接器可以用于后续文件发布与CI状态读取；本次不将预期地址冒充已上线地址。
+iPhone Safari、微信、Android Chrome真机、旋转、系统分享和音乐长时间听感仍待实测。Actions有上游Action运行时的非阻塞弃用提示，但本次工作流部署成功。
 
-没有线上Actions运行、Pages发布或线上控制台检查结果，不能宣称部署成功。
+此前创建仓库阶段曾受连接器缺少建仓接口、本机凭据和浏览器故障阻碍；用户建好独立仓库后，通过已连接GitHub接口完成源码发布，不再需要用户手工上传源码。

@@ -8,9 +8,9 @@
 
 ## 公开访问
 
-**GitHub Pages访问地址：尚未发布，等待远程仓库创建及Actions成功部署。**
+**GitHub Pages公开访问：[立即逃跑 ↗](https://liurunjia629-bit.github.io/Dont-Make-Me-Work/)**
 
-此处不填写推测地址。发布后以 GitHub Actions 的 `deployment` 步骤返回的 `page_url` 和仓库 Settings → Pages 显示的地址为准，再补入本节。
+[GitHub独立公开仓库](https://github.com/liurunjia629-bit/Dont-Make-Me-Work) · [首次成功部署记录](https://github.com/liurunjia629-bit/Dont-Make-Me-Work/actions/runs/40673730308)。公开首页及全部26个生产URL已通过HTTP检查，内容与本地构建一致。线上浏览器交互和控制台尚未验收。
 
 ## 操作
 
