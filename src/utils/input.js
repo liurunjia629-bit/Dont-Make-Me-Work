@@ -1,0 +1,2 @@
+// One pointerdown = one action. Ignore secondary pointers and compatibility clicks.
+export function bindAction(button,action){let down=e=>{if(!e.isPrimary||e.button>0)return;e.preventDefault();action()};let click=e=>{if(e.detail===0)action()};button.addEventListener('pointerdown',down);button.addEventListener('click',click);return()=>{button.removeEventListener('pointerdown',down);button.removeEventListener('click',click)}}
